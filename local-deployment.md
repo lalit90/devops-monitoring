@@ -7,7 +7,7 @@ Install Python 3.9+ with libraries:
 pip install kubernetes gitpython requests flask
 pip install flask prometheus-flask-exporter
 
-cd service
+
 docker build -t python-service:latest .
 docker push lalit1029/python-service:latest
 
