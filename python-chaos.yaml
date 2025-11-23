@@ -11,4 +11,4 @@ spec:
       - default
     labelSelectors:
       "app": "python-service"
-  duration: "30s"
+  duration: "2m"
