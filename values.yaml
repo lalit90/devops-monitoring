@@ -1,0 +1,9 @@
+serverFiles:
+  prometheus.yml:
+    scrape_configs:
+    - job_name: 'kubernetes-service-endpoints'
+      kubernetes_sd_configs:
+      - role: endpoints
+      relabel_configs:
+      - source_labels: [__meta_kubernetes_service_name]
+        target_label: job

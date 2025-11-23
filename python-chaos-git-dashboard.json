@@ -1,0 +1,53 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "Python Service Chaos & GitOps Monitoring",
+    "tags": ["python", "chaos", "gitops", "kubernetes"],
+    "timezone": "browser",
+    "panels": [
+      {
+        "type": "graph",
+        "title": "Chaos Experiment Events",
+        "targets": [
+          {
+            "expr": "chaos_experiment_triggered",
+            "legendFormat": "Experiment Triggered",
+            "refId": "A"
+          },
+          {
+            "expr": "chaos_experiment_failures_total",
+            "legendFormat": "Failures",
+            "refId": "B"
+          }
+        ],
+        "datasource": "Prometheus"
+      },
+      {
+        "type": "graph",
+        "title": "Python Service Uptime",
+        "targets": [
+          {
+            "expr": "up{job=\"python-service\"}",
+            "legendFormat": "Service Status",
+            "refId": "A"
+          }
+        ],
+        "datasource": "Prometheus"
+      },
+      {
+        "type": "table",
+        "title": "Git Redeployment Status",
+        "targets": [
+          {
+            "expr": "git_commit_deployments_total",
+            "legendFormat": "Commits Deployed",
+            "refId": "A"
+          }
+        ],
+        "datasource": "Prometheus"
+      }
+    ],
+    "schemaVersion": 27,
+    "version": 1
+  }
+}
