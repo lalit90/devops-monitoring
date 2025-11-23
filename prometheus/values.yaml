@@ -7,3 +7,12 @@ serverFiles:
       relabel_configs:
       - source_labels: [__meta_kubernetes_service_name]
         target_label: job
+
+# Expose Prometheus service via NodePort
+prometheus:
+  service:
+    type: NodePort
+    nodePort: 30090   # external port for Prometheus
+    port: 80          # internal service port
+    targetPort: 9090  # Prometheus container port
+

@@ -1,0 +1,7 @@
+# Expose Grafana service via NodePort
+grafana:
+  service:
+    type: NodePort
+    nodePort: 30300   # external port for Grafana
+    port: 3000        # internal service port
+    targetPort: 3000  # Grafana container port

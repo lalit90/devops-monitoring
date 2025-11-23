@@ -100,10 +100,27 @@ def validate_monitoring():
     else:
         print("❌ No UP metric found — check Prometheus scrape config")
 
+
+# --- STEP 6: Port Forward Services ---
+def port_forward_service(service_name, local_port, service_port, namespace=NAMESPACE):
+    print(f"🔌 Port forwarding {service_name} {local_port} -> {service_port}")
+    subprocess.Popen([
+        "kubectl", "port-forward",
+        f"svc/{service_name}", f"{local_port}:{service_port}",
+        "-n", namespace
+    ])
+    time.sleep(5)  # give it a moment to establish
+    print(f"✅ {service_name} available at http://localhost:{local_port}")
+
+
 # --- MAIN FLOW ---
 if __name__ == "__main__":
     git_flow_commit_and_merge("MMTR pipeline run")
     build_and_push_image(tag="latest")
     deploy_new_image()
+     # Port forward app, Prometheus, and Grafana
+    # port_forward_service(service_name=DEPLOYMENT, local_port=5000, service_port=5000)
+    # port_forward_service(service_name="prometheus-server", local_port=9090, service_port=80, namespace="monitoring")
+    # port_forward_service(service_name="grafana", local_port=3000, service_port=3000, namespace="monitoring")
     run_chaos_experiment()
     validate_monitoring()
