@@ -90,6 +90,7 @@ def validate_monitoring():
 # --- MAIN FLOW ---
 if __name__ == "__main__":
     git_flow_commit_and_merge("MMTR pipeline run")
+    build_and_push_image(tag="latest")
     deploy_new_image()
     run_chaos_experiment()
     validate_monitoring()
