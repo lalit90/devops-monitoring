@@ -1,0 +1,12 @@
+# --- Core app dependencies ---
+flask==3.0.3
+prometheus-client==0.20.0
+gunicorn==23.0.0   # optional, for production serving
+
+# --- MMTR automation script dependencies ---
+requests==2.32.3
+python-dotenv==1.0.1
+
+# --- Optional utilities ---
+GitPython==3.1.43   # if you want to use GitPython instead of subprocess
+PyYAML==6.0.2       # if you want to parse YAML manifests programmatically
