@@ -44,6 +44,10 @@ helm install chaos-mesh chaos-mesh/chaos-mesh -n chaos-testing
 
 kubectl apply -f python-chaos.yaml
 
+# with chaos engine:
+kubectl apply -f chaosengine.yaml
+
+
 # In grafana add the below path for prometheus as data source
 http://prometheus-server.monitoring.svc.cluster.local:80
 

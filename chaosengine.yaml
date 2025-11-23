@@ -1,0 +1,12 @@
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: python-service-chaos
+  namespace: litmus
+spec:
+  appinfo:
+    appns: default
+    applabel: "app=python-service"
+    appkind: deployment
+  experiments:
+    - name: pod-delete
